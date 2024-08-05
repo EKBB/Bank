@@ -58,3 +58,5 @@ class ManagerTransaction{
         }
     }
 }
+
+export default ManagerTransaction;

@@ -9,6 +9,7 @@ Actualizar
 import UserModel from '../models/UserModel.js'
 import ManagerAccount from "./AccountClass.js"
 import ManagerCard from './CardClass.js'
+import Tools from './ToolClass.js'
 
 
 class ManagerUser {
@@ -37,7 +38,7 @@ class ManagerUser {
             const MA = new ManagerAccount(user._id,12345,"Ahorro",1000)
             const currenAccount = await MA.createAccount();
 
-            const MC = new ManagerCard(user._id, currenAccount._id, "16 digitos al azar","debito","de la fecha actual sumar 3 años","generar codigo de 3 cifras","active")
+            const MC = new ManagerCard(user._id, currenAccount._id, Tools.randomNumbers(),"debito", Tools.expirationDate(),Tools.Code(), Tools.statusActivo())
             await MC.createCard();
             return user;
         } catch (error) {
@@ -114,10 +115,10 @@ class ManagerUser {
     }
 
     async delete(){
-        
+
     }
 
 
 }
 
-export default ManagerUser();
+export default ManagerUser;
